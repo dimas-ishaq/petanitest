@@ -19,6 +19,8 @@ steps:
       - "--platform"
       - "managed"
       - "--allow-unauthenticated"
+      - "--port"
+      - "80"
 images:
   - "gcr.io/petanikita/petanitest:$COMMIT_SHA"
 options:
