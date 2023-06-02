@@ -6,7 +6,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/petanikita/petanitest:$COMMIT_SHA"]
   # Deploy container image to Cloud Run
-  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+  - name: "gcr.io/cloud-builders/gcloud"
     entrypoint: gcloud
     args:
       - "run"
