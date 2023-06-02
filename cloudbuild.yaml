@@ -16,8 +16,9 @@ steps:
       - "gcr.io/petanikita/petanitest:$COMMIT_SHA"
       - "--region"
       - "us-central1"
-    ports:
-    - containerPort: 80
+      - "--platform"
+      - "managed"
+      - "--allow-unauthenticated"
 images:
   - "gcr.io/petanikita/petanitest:$COMMIT_SHA"
 options:
