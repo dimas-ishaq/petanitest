@@ -16,10 +16,10 @@ steps:
       - "gcr.io/petanikita/petanitest:$COMMIT_SHA"
       - "--region"
       - "us-central1"
+    ports:
+    - containerPort: 80
+      hostPort: 8080
 images:
   - "gcr.io/petanikita/petanitest:$COMMIT_SHA"
-ports:
-  - containerPort: 80
-    hostPort: 8080
 options:
   logging: CLOUD_LOGGING_ONLY
