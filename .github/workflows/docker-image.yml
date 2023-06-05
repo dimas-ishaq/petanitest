@@ -35,5 +35,19 @@ jobs:
       - name: Push Docker image
         run: docker push $IMAGE_NAME
 
+<<<<<<< HEAD
       - name: Deploy Docker image
         run: gcloud run deploy ${{ secrets.GCP_PROJECT_ID }} --image $IMAGE_NAME --region us-central1 --platform managed
+=======
+        - name: Build Docker image
+          run: docker build -t $IMAGE_NAME .
+
+        - name: Test Docker image
+          run: docker run $IMAGE_NAME sh -c "go test -v"
+
+        - name: Push Docker image
+          run: docker push $IMAGE_NAME
+
+        - name: Deploy Docker image
+          run: gcloud run deploy ${{ secrets.GCP_PROJECT_ID }} --image $IMAGE_NAME --region us-central1 --platform managed
+>>>>>>> 8645892318cfebe82d2c2be545adfd6ba451fa9b
