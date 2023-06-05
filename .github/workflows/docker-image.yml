@@ -28,9 +28,12 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t $IMAGE_NAME .
+        
+      - name: Tag Docker image
+        run: docker tag $IMAGE_NAME gcr.io/${{ secrets.GCP_PROJECT_ID }}/$IMAGE_NAME
 
       - name: Push Docker image
-        run: docker push $IMAGE_NAME
+        run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/$IMAGE_NAME
 
       - name: Deploy Docker image
         run: gcloud run deploy ${{ secrets.GCP_PROJECT_ID }} --image $IMAGE_NAME --region us-central1 --platform managed
